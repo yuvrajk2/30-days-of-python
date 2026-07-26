@@ -3,7 +3,6 @@
 # It should generate multiplication table for 1 ,2 ,3...n
 # It should align table properly and print in a readable format. 
 # tables hsould be printed in a tabular format with proper spacing.
-# tables should be in columns
 
 n = int(input("Enter the number of tables to generate: "))
 
