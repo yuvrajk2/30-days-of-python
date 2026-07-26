@@ -1,281 +1,233 @@
-# Python Developer Project Roadmap
+# Python Projects to Build
 
-This roadmap contains projects a Python developer should build to turn
-language knowledge into practical experience. Work through the levels in
-order, but revisit earlier projects when you learn a better technique.
+This is a focused project path, not a list of every possible Python
+project. Build these projects in order. Start with the basic version, then
+add the improvements listed for that project.
 
-For every project, write a README, use a virtual environment, validate
-inputs, handle expected errors, and add tests for the important behavior.
-
-## How to Use This Roadmap
-
-For each project:
-
-1. Build a small working version first.
-2. Separate user-interface code from business logic.
-3. Store data in an appropriate format.
-4. Add tests before making large refactors.
-5. Add type hints, docstrings, and formatting.
-6. Record limitations and future improvements in the README.
-
-The goal is not to collect unfinished tutorials. The goal is to finish
-projects that another person can run, understand, and use.
+For every project, create a README, use functions instead of one giant
+script, handle invalid input, and add tests for the important logic.
 
 ---
 
-# Level 1 – Beginner Mini Projects
+## 1. Simple Calculator
 
-These projects develop syntax, input/output, conditionals, loops, functions,
-and basic collections.
+### What you will build
 
-| Project | Core skills |
-|---------|-------------|
-| Simple Calculator | Input, arithmetic, functions, error handling |
-| Unit Converter | Functions, menus, numeric conversion |
-| Grade Calculator | Conditions, validation, averages |
-| Number Guessing Game | Loops, `random`, attempts, hints |
-| Multiplication Table Generator | Loops, ranges, formatted output |
-| Rock-Paper-Scissors | Conditions, randomness, score tracking |
-| Dice Rolling Simulator | Modules, loops, random values |
-| Mad Libs Generator | Strings, templates, user input |
-| Temperature Converter | Functions, formulas, validation |
-| Leap Year and Age Calculator | Dates, conditions, input validation |
-| Basic Quiz Game | Lists, dictionaries, scoring |
-| Countdown Timer | Loops, `time`, formatted output |
+A command-line calculator that asks for two numbers and an operation, then
+prints the result.
 
-## Beginner Definition of Done
+### It must be able to
 
-- The program has a clear start and exit path.
-- Invalid input does not crash the program unexpectedly.
-- Repeated logic is moved into functions.
-- The README includes an example session.
-- At least five normal and edge-case inputs have been tried.
+- Add, subtract, multiply, and divide.
+- Reject invalid numbers.
+- Prevent division by zero.
+- Let the user perform another calculation or exit.
 
-## Beginner Upgrade Challenge
+### You will learn
 
-Choose one project and add:
+Variables, input, type conversion, conditions, functions, loops, and
+exception handling.
 
-- A menu-driven interface.
-- A replay option.
-- Persistent high scores or history in a JSON file.
-- Automated tests for the core functions.
+### Improve it later
+
+Add powers, percentages, a calculation history, and tests for every
+operation.
 
 ---
 
-# Level 2 – Core Python Projects
+## 2. Expense Tracker
 
-These projects develop lists, dictionaries, files, exceptions, modules, and
-object-oriented programming.
+### What you will build
 
-| Project | Core skills |
-|---------|-------------|
-| Student Marks Manager | Lists, dictionaries, averages, reports |
-| Contact Book | CRUD operations, searching, JSON persistence |
-| Student Management System | Classes, validation, file storage |
-| Expense Tracker | CSV/JSON files, dates, totals, filtering |
-| To-Do List CLI | CRUD, priorities, due dates, persistence |
-| Notes Application | File handling, search, timestamps |
-| Library Management System | OOP, checkout rules, records |
-| Inventory Management System | Products, stock levels, reports |
-| Bank Account Simulator | Classes, transactions, exceptions |
-| ATM Simulation | Authentication flow, balance rules, menus |
-| File Organizer | `pathlib`, file extensions, safe moves |
-| Log File Analyzer | Text processing, regular expressions, reports |
-| Password Generator | `secrets`, character sets, validation |
-| Address Book Importer | CSV parsing, duplicate detection, export |
-| Personal Finance Report | Categories, date ranges, aggregation |
+A command-line program where a user records personal expenses and checks
+how much they have spent.
 
-## Core Project Definition of Done
+### It must be able to
 
-- Data operations are separated from the command-line interface.
-- The program handles missing files and malformed records.
-- Classes are used where they make the domain clearer.
-- Records can be added, viewed, edited, and deleted where appropriate.
-- Tests cover success, empty, duplicate, missing, and invalid cases.
+- Add an expense with an amount, category, description, and date.
+- List all expenses.
+- Show the total amount spent.
+- Filter expenses by category.
+- Save expenses to a CSV or JSON file.
+- Load saved expenses when the program starts.
 
-## Core Upgrade Challenge
+### You will learn
 
-Convert one command-line project into a reusable Python package:
+Lists, dictionaries, dates, file handling, CSV/JSON, validation, and
+separating data logic from the menu.
 
-- Add a `pyproject.toml`.
-- Add a `src/` package layout.
-- Add type hints and docstrings.
-- Add a test suite.
-- Add a command-line entry point.
-- Use `logging` instead of scattered debug prints.
+### Improve it later
+
+Add monthly reports, spending limits, charts, and automated tests.
 
 ---
 
-# Level 3 – Intermediate Portfolio Projects
+## 3. Library Management System
 
-These projects introduce APIs, databases, authentication, web interfaces,
-external services, and stronger testing.
+### What you will build
 
-| Project | Core skills |
-|---------|-------------|
-| To-Do REST API | Flask/FastAPI, CRUD routes, JSON, status codes |
-| Student REST API | Pydantic validation, filtering, pagination |
-| Book Review API | Relationships, authentication, database queries |
-| Habit Tracker | Dates, recurring data, dashboards |
-| Weather API Client | HTTP requests, API errors, caching |
-| Currency Converter | External API integration, rates, fallbacks |
-| URL Shortener | Database models, unique codes, redirects |
-| Blog API | Users, posts, permissions, pagination |
-| Recipe Manager | Search, tags, images, structured data |
-| Job Application Tracker | Forms, statuses, reminders, reporting |
-| Help Desk Ticket System | Roles, workflows, comments, audit history |
-| Personal Dashboard | Multiple data sources, charts, scheduled updates |
-| Web Scraper and Monitor | Requests, parsing, rate limits, change detection |
-| Email Report Generator | Templates, scheduled jobs, attachments |
-| Chat Application | WebSockets, sessions, message history |
+A small library program that manages books and records which books are
+available or checked out.
 
-## Intermediate Project Definition of Done
+### It must be able to
 
-- The API has documented endpoints and example requests.
-- Request data is validated at the boundary.
-- Errors use useful messages and appropriate HTTP status codes.
-- Data is stored in SQLite or PostgreSQL instead of only memory.
-- Authentication and authorization rules are explicit.
-- Tests include API routes and important business rules.
-- Configuration and secrets are read from environment variables.
-- The project includes a local setup guide.
+- Add, edit, remove, and list books.
+- Search by title or author.
+- Check out an available book.
+- Return a checked-out book.
+- Show which books are available.
+- Save the library records to a file.
 
-## Intermediate Upgrade Challenge
+### You will learn
 
-Deploy one API and add:
+Classes, objects, dictionaries, CRUD operations, search, persistence, and
+business rules.
 
-- Database migrations.
-- Structured logging.
-- Health and readiness endpoints.
-- API documentation with OpenAPI.
-- Rate limiting or request-size limits.
-- A CI check that runs formatting, linting, and tests.
+### Improve it later
+
+Add members, borrowing dates, overdue notices, a database, and tests for
+checkout and return rules.
 
 ---
 
-# Level 4 – Advanced Python Projects
+## 4. File Organizer
 
-These projects demonstrate architecture, concurrency, algorithms,
-observability, security awareness, and production-quality engineering.
+### What you will build
 
-| Project | Core skills |
-|---------|-------------|
-| E-commerce Backend | Domain modeling, payments, orders, inventory |
-| Multi-tenant SaaS API | Tenant isolation, roles, billing boundaries |
-| Background Job Queue | Workers, retries, scheduling, idempotency |
-| Distributed Web Scraper | Async I/O, queues, rate limiting, persistence |
-| Data Pipeline | ETL, validation, batching, observability |
-| Recommendation Engine | Data processing, ranking, evaluation |
-| Search Service | Indexing, tokenization, ranking, query performance |
-| Real-Time Collaboration Tool | WebSockets, concurrency, conflict handling |
-| Event-Driven Order System | Events, consumers, retries, dead-letter handling |
-| Feature Flag Service | Rule evaluation, caching, audit history |
-| Metrics and Monitoring Service | Time series, aggregation, alerting |
-| Secure Secrets Vault Prototype | Encryption concepts, access control, auditing |
-| Static Type Checker or Linter | AST parsing, visitors, diagnostics |
-| Python Package for Public Release | API design, packaging, compatibility |
-| Custom Scheduler | Priority queues, persistence, job execution |
+A utility that scans a folder and moves files into folders such as
+`Images`, `Documents`, `Videos`, and `Other` based on their extensions.
 
-## Advanced Project Definition of Done
+### It must be able to
 
-- The architecture and major trade-offs are documented.
-- Components have clear boundaries and interfaces.
-- Long-running or concurrent work can be observed and stopped safely.
-- Retries do not duplicate unsafe operations.
-- Sensitive data is not logged or committed.
-- Performance characteristics are measured rather than guessed.
-- Tests include failure paths and integration behavior.
-- The project has reproducible development and deployment instructions.
+- Accept a folder path from the user.
+- Detect file extensions.
+- Create destination folders when needed.
+- Move files safely.
+- Avoid overwriting files with the same name.
+- Show a summary of what was moved.
 
-## Advanced Upgrade Challenge
+### You will learn
 
-For one project, add:
+`pathlib`, filesystem operations, functions, error handling, and safe
+automation.
 
-- Docker or a documented production-like environment.
-- CI/CD checks.
-- Structured logs and metrics.
-- Load or performance tests.
-- A threat model and security review.
-- A rollback or recovery plan.
+### Improve it later
+
+Add a preview mode, undo support, a configuration file, logging, and tests
+using temporary directories.
 
 ---
 
-# Essential Projects by Python Career Direction
+## 5. Weather API Client
 
-## Python Backend Developer
+### What you will build
 
-Build a CRUD API, authentication service, blog API, background job queue,
-and one production-style database application.
+A command-line application that asks for a city and displays current
+weather information from a public weather API.
 
-## Data and Automation Developer
+### It must be able to
 
-Build a CSV/JSON pipeline, web scraper, ETL system, report generator, and
-dashboard that explains the output.
+- Accept a city name.
+- Call an HTTP API.
+- Display temperature, conditions, and location.
+- Handle an unknown city.
+- Handle network errors and API errors.
+- Read the API key from an environment variable instead of source code.
 
-## QA or Test Automation Developer
+### You will learn
 
-Build a tested CLI application, API test suite, browser automation project,
-fixture library, and CI pipeline.
+HTTP requests, JSON responses, environment variables, API keys, error
+handling, and working with external services.
 
-## Data Scientist or Machine Learning Developer
+### Improve it later
 
-Build a data-cleaning pipeline, exploratory analysis notebook, prediction
-service, model evaluation report, and monitored inference API.
-
-## DevOps or Platform Developer
-
-Build a log analyzer, deployment health checker, job scheduler, metrics
-collector, and service that exposes health and readiness information.
-
----
-
-# Portfolio Standards
-
-Every portfolio project should include:
-
-- A concise README explaining the problem and intended user.
-- Installation and run instructions that work from a clean checkout.
-- Screenshots, sample output, or API examples.
-- A clear project structure.
-- A `pyproject.toml` with project metadata and tools.
-- Type hints on important public functions.
-- Automated tests and one documented test command.
-- Consistent formatting and linting.
-- Explicit error handling.
-- No committed passwords, tokens, or private data.
-- A short section describing trade-offs and future work.
-
-Avoid presenting ten nearly identical tutorial projects. A stronger portfolio
-has three to five finished projects that show increasing complexity and
-different skills.
+Add a five-day forecast, response caching, unit selection, tests with mocked
+responses, and a simple web interface.
 
 ---
 
-# Suggested Portfolio Sequence
+## 6. To-Do REST API
 
-Complete these projects in order:
+### What you will build
 
-1. **Expense Tracker CLI** – files, validation, reports, tests.
-2. **Library Management System** – OOP, search, persistence.
-3. **File Organizer** – filesystem operations and safe error handling.
-4. **To-Do REST API** – Flask or FastAPI, validation, JSON, tests.
-5. **Weather API Client** – external APIs, caching, failure handling.
-6. **Blog or Book Review API** – authentication, database relationships.
-7. **Background Job Queue** – workers, retries, logging, scheduling.
-8. **Capstone of Choice** – a complete application with documentation,
-   testing, deployment, and a retrospective.
+A web API where clients can create, view, update, and delete to-do items.
+Use Flask or FastAPI.
+
+### It must be able to
+
+- `GET /tasks` — list tasks.
+- `GET /tasks/{id}` — view one task.
+- `POST /tasks` — create a task.
+- `PATCH /tasks/{id}` — update a task.
+- `DELETE /tasks/{id}` — delete a task.
+- Validate required fields.
+- Return useful HTTP status codes and error messages.
+- Store tasks in SQLite or another database.
+
+### You will learn
+
+REST APIs, routing, JSON, validation, databases, HTTP status codes, and
+automated API tests.
+
+### Improve it later
+
+Add user accounts, authentication, pagination, filtering, OpenAPI
+documentation, database migrations, and deployment.
 
 ---
 
-# Final Project Checklist
+## 7. Background Job Queue
 
-- [ ] The project solves a specific problem.
-- [ ] The smallest useful version is complete.
-- [ ] The main flow is tested.
-- [ ] Invalid input is handled explicitly.
-- [ ] Data persistence is reliable when required.
-- [ ] Configuration is separate from source code.
-- [ ] Documentation is sufficient for a new user.
-- [ ] Formatting, linting, and tests pass.
-- [ ] The README explains one important design decision.
-- [ ] The project has a realistic next improvement.
+### What you will build
+
+A service that accepts jobs, places them in a queue, and lets a worker
+process them in the background. Example jobs include sending an email,
+generating a report, or resizing an image.
+
+### It must be able to
+
+- Add a job to a queue.
+- Give each job an ID and status.
+- Process jobs with a worker.
+- Mark jobs as completed or failed.
+- Retry a failed job a limited number of times.
+- Record useful logs without exposing secrets.
+
+### You will learn
+
+Queues, workers, concurrency, retries, logging, job status, and designing
+reliable long-running programs.
+
+### Improve it later
+
+Add scheduled jobs, multiple workers, persistent storage, graceful shutdown,
+monitoring, and a web dashboard.
+
+---
+
+# Recommended Build Order
+
+1. Simple Calculator
+2. Expense Tracker
+3. Library Management System
+4. File Organizer
+5. Weather API Client
+6. To-Do REST API
+7. Background Job Queue
+
+The first four build your Python fundamentals. The Weather API Client
+teaches external services. The REST API teaches backend development. The
+Background Job Queue is the advanced project that combines reliability,
+concurrency, and production-style thinking.
+
+# Definition of Done
+
+A project is finished when:
+
+- Another person can run it by following the README.
+- The main user flow works from start to finish.
+- Invalid input produces a clear error.
+- Important logic is covered by tests.
+- Secrets are stored outside the code.
+- The code is formatted and organized into understandable files.
+- You have written down one limitation and one future improvement.
