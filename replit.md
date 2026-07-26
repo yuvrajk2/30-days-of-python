@@ -10,6 +10,7 @@ projects, practice exercises, and capstone guidance.
 - `day_14/` through `day_20/` — Advanced Python patterns, regex, environments, typing, Pydantic, and formatting, plus a Password Manager checkpoint.
 - `day_21/` through `day_27/` — Data structures, recursion, trees, sorting, searching, and algorithm analysis.
 - `day_28/` through `day_30/` — Testing, documentation, Flask/FastAPI introductions, and capstone planning.
+- `projects.md` — A progression of beginner mini-projects through advanced Python portfolio projects.
 - `day_1/Day1.py`, `day_2/basic.py`, and `day_2/intermediate.py` — Interactive practice scripts.
 
 ## Running Scripts
