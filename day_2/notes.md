@@ -543,6 +543,7 @@ else:
 The number guessing game is useful additional practice for conditionals,
 but the grade calculator is the roadmap mini-project for this day.
 
+
 ---
 
 # Day 2 Summary
