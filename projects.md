@@ -1,13 +1,16 @@
 # Python Projects to Build
 
 This is a focused project path, not a list of every possible Python
-project. Build these projects in order. Start with the basic version, then
-add the improvements listed for that project.
+project. It contains 15 practical projects. Build them in order, starting
+with the basic version and then adding the improvements listed for each
+project.
 
 For every project, create a README, use functions instead of one giant
 script, handle invalid input, and add tests for the important logic.
 
 ---
+
+# Beginner Projects
 
 ## 1. Simple Calculator
 
@@ -35,7 +38,83 @@ operation.
 
 ---
 
-## 2. Expense Tracker
+## 2. Unit Converter
+
+### What you will build
+
+A menu-driven program that converts values between units such as Celsius
+and Fahrenheit, kilometers and miles, and kilograms and pounds.
+
+### It must be able to
+
+- Show available conversion choices.
+- Accept a value from the user.
+- Perform the selected conversion.
+- Display the result with a clear unit.
+- Reject invalid choices and values.
+
+### You will learn
+
+Functions, formulas, menus, numeric conversion, and input validation.
+
+### Improve it later
+
+Add more units, a two-way conversion option, and tests for every formula.
+
+---
+
+## 3. Quiz Game
+
+### What you will build
+
+A command-line quiz that asks multiple-choice questions and displays the
+user's final score.
+
+### It must be able to
+
+- Store several questions and answer choices.
+- Accept and check the user's answer.
+- Keep track of the score.
+- Show the correct answer when the user is wrong.
+- Display the final score and percentage.
+
+### You will learn
+
+Lists, dictionaries, loops, conditions, functions, and scoring.
+
+### Improve it later
+
+Load questions from JSON, shuffle the questions, add categories, and save
+high scores.
+
+---
+
+## 4. Number Guessing Game
+
+### What you will build
+
+A game where the computer chooses a random number and the user tries to
+guess it.
+
+### It must be able to
+
+- Generate a random number in a chosen range.
+- Tell the user whether the guess is too high or too low.
+- Count the number of attempts.
+- Stop when the user guesses correctly.
+- Handle invalid guesses.
+
+### You will learn
+
+Loops, the `random` module, comparisons, counters, and exception handling.
+
+### Improve it later
+
+Add difficulty levels, a maximum number of guesses, and a high-score table.
+
+---
+
+## 5. Expense Tracker
 
 ### What you will build
 
@@ -62,7 +141,33 @@ Add monthly reports, spending limits, charts, and automated tests.
 
 ---
 
-## 3. Library Management System
+## 6. Contact Book
+
+### What you will build
+
+A command-line contact book that stores people's names, phone numbers, and
+email addresses.
+
+### It must be able to
+
+- Add a contact.
+- List all contacts.
+- Search by name or phone number.
+- Edit and delete a contact.
+- Save and load contacts from a JSON file.
+
+### You will learn
+
+Dictionaries, CRUD operations, searching, JSON persistence, and validation.
+
+### Improve it later
+
+Add groups, duplicate detection, CSV import/export, and alphabetical
+sorting.
+
+---
+
+## 7. Library Management System
 
 ### What you will build
 
@@ -90,7 +195,32 @@ checkout and return rules.
 
 ---
 
-## 4. File Organizer
+## 8. Student Management System
+
+### What you will build
+
+A program that stores student details and marks, then produces useful
+student reports.
+
+### It must be able to
+
+- Add, edit, remove, and list students.
+- Store marks for several subjects.
+- Calculate each student's average and grade.
+- Find the highest-scoring student.
+- Save student records to a file.
+
+### You will learn
+
+Classes, lists, dictionaries, calculations, file handling, and reporting.
+
+### Improve it later
+
+Add attendance, search and filtering, a database, and a REST API.
+
+---
+
+## 9. File Organizer
 
 ### What you will build
 
@@ -118,7 +248,34 @@ using temporary directories.
 
 ---
 
-## 5. Weather API Client
+## 10. Notes Application
+
+### What you will build
+
+A command-line notes application where users can create, search, edit, and
+delete personal notes.
+
+### It must be able to
+
+- Create a note with a title and body.
+- List all saved notes.
+- Search note titles and content.
+- Edit and delete notes.
+- Save notes to JSON or text files.
+
+### You will learn
+
+File handling, timestamps, CRUD operations, searching, and error handling.
+
+### Improve it later
+
+Add tags, archive support, Markdown notes, and full-text search.
+
+---
+
+# Intermediate Projects
+
+## 11. Weather API Client
 
 ### What you will build
 
@@ -146,7 +303,32 @@ responses, and a simple web interface.
 
 ---
 
-## 6. To-Do REST API
+## 12. Log File Analyzer
+
+### What you will build
+
+A tool that reads an application log file and reports how many information,
+warning, and error messages it contains.
+
+### It must be able to
+
+- Read a log file line by line.
+- Recognize log levels and timestamps.
+- Count each type of message.
+- Display the most common errors.
+- Report malformed lines instead of silently ignoring them.
+
+### You will learn
+
+Text processing, regular expressions, dictionaries, files, and reporting.
+
+### Improve it later
+
+Add date filtering, CSV reports, charts, and support for large files.
+
+---
+
+## 13. To-Do REST API
 
 ### What you will build
 
@@ -176,7 +358,34 @@ documentation, database migrations, and deployment.
 
 ---
 
-## 7. Background Job Queue
+## 14. Blog REST API
+
+### What you will build
+
+A web API where users can create accounts, publish blog posts, and leave
+comments. Use Flask or FastAPI.
+
+### It must be able to
+
+- Register and authenticate users.
+- Create, view, edit, and delete posts.
+- List posts with pagination.
+- Allow comments on posts.
+- Prevent users from editing other users' posts.
+- Store data in a database.
+
+### You will learn
+
+API design, authentication, authorization, database relationships,
+validation, pagination, and API testing.
+
+### Improve it later
+
+Add tags, search, image uploads, email verification, and deployment.
+
+---
+
+## 15. Background Job Queue
 
 ### What you will build
 
@@ -205,20 +414,58 @@ monitoring, and a web dashboard.
 
 ---
 
+# Advanced Project
+
+## Optional Capstone: Web Scraper and Monitor
+
+### What you will build
+
+A program that visits selected web pages, extracts specific information,
+and reports when that information changes.
+
+### It must be able to
+
+- Read a list of URLs from a configuration file.
+- Fetch pages safely with timeouts.
+- Extract the required text or data.
+- Save previous results.
+- Detect and report changes.
+- Respect delays and handle failed requests.
+
+### You will learn
+
+HTTP clients, HTML parsing, configuration, persistence, scheduling, and
+responsible automation.
+
+### Improve it later
+
+Add a dashboard, email notifications, concurrent requests, and a database.
+
+---
+
 # Recommended Build Order
 
 1. Simple Calculator
-2. Expense Tracker
-3. Library Management System
-4. File Organizer
-5. Weather API Client
-6. To-Do REST API
-7. Background Job Queue
+2. Unit Converter
+3. Quiz Game
+4. Number Guessing Game
+5. Expense Tracker
+6. Contact Book
+7. Library Management System
+8. Student Management System
+9. File Organizer
+10. Notes Application
+11. Weather API Client
+12. Log File Analyzer
+13. To-Do REST API
+14. Blog REST API
+15. Background Job Queue
+16. Optional Capstone: Web Scraper and Monitor
 
-The first four build your Python fundamentals. The Weather API Client
-teaches external services. The REST API teaches backend development. The
-Background Job Queue is the advanced project that combines reliability,
-concurrency, and production-style thinking.
+Projects 1–4 build your fundamentals. Projects 5–10 teach file handling,
+data modeling, and object-oriented programming. Projects 11–14 introduce
+external APIs and backend development. Project 15 teaches reliability and
+background processing. The optional capstone combines several skills.
 
 # Definition of Done
 
