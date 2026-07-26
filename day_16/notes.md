@@ -236,7 +236,7 @@ ip_pattern       = r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
 
 ---
 
-# Mini Project – Email & Input Validator
+# Mini Project – Email Validator
 
 ```python
 import re

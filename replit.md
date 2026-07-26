@@ -1,11 +1,16 @@
 # Python Learning Notes
 
-A day-by-day Python study repository with structured notes and practice scripts for beginners.
+A complete 30-day Python study repository with structured notes, mini
+projects, practice exercises, and capstone guidance.
 
 ## Structure
 
-- `day_1/` — Python basics: syntax, variables, data types, input/output. Practice script: `Day1.py` (simple calculator).
-- `day_2/` — Operators, type casting, conditional statements. Scripts: `basic.py`, `intermediate.py`.
+- `day_1/` through `day_7/` — Python fundamentals, collections, and a Student Management System checkpoint.
+- `day_8/` through `day_13/` — Modules, exceptions, files, OOP, functional programming, and a Library Management System checkpoint.
+- `day_14/` through `day_20/` — Advanced Python patterns, regex, environments, typing, Pydantic, and formatting, plus a Password Manager checkpoint.
+- `day_21/` through `day_27/` — Data structures, recursion, trees, sorting, searching, and algorithm analysis.
+- `day_28/` through `day_30/` — Testing, documentation, Flask/FastAPI introductions, and capstone planning.
+- `day_1/Day1.py`, `day_2/basic.py`, and `day_2/intermediate.py` — Interactive practice scripts.
 
 ## Running Scripts
 
@@ -16,6 +21,10 @@ python day_1/Day1.py
 python day_2/basic.py
 python day_2/intermediate.py
 ```
+
+The Markdown files in each `day_*` directory contain the lesson notes,
+practice questions, and roadmap mini-project for that day. Days 27–30
+complete the uploaded 30-day roadmap.
 
 ## User Preferences
 

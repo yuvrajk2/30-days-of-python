@@ -511,17 +511,37 @@ if age > 18:
 
 ---
 
-# Mini Project
+# Mini Project – Grade Calculator
 
-## Number Guessing Game
+The roadmap project for Day 2 is a grade calculator. It combines input,
+type conversion, comparison operators, and an `if`/`elif`/`else` chain.
 
-Requirements:
+```python
+marks = float(input("Enter marks (0–100): "))
 
-- Generate a random number between **1 and 100**.
-- Ask the user to guess the number.
-- Display **Too High** or **Too Low** after each guess.
-- Count the number of attempts.
-- Display a success message when the correct number is guessed.
+if marks < 0 or marks > 100:
+    print("Marks must be between 0 and 100.")
+elif marks >= 90:
+    print("Grade: A")
+elif marks >= 80:
+    print("Grade: B")
+elif marks >= 70:
+    print("Grade: C")
+elif marks >= 60:
+    print("Grade: D")
+else:
+    print("Grade: F")
+```
+
+### Improvements to Try
+
+1. Reject non-numeric input with `try`/`except`.
+2. Display whether the student passed.
+3. Calculate the average of several subjects.
+4. Turn the grading logic into a reusable function.
+
+The number guessing game is useful additional practice for conditionals,
+but the grade calculator is the roadmap mini-project for this day.
 
 ---
 

@@ -353,32 +353,56 @@ def greet():
 
 ---
 
-# Mini Project – Simple ATM
+# Mini Project – Unit Converter
+
+The roadmap project for Day 4 is a unit converter. It demonstrates how
+functions keep each conversion independent, reusable, and easy to test.
 
 ```python
-balance = 10000
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9 / 5) + 32
 
-def check_balance():
-    print(f"Balance: ₹{balance}")
+def kilometers_to_miles(kilometers):
+    return kilometers * 0.621371
 
-def deposit(amount):
-    global balance
-    balance += amount
-    print(f"Deposited ₹{amount}. New Balance: ₹{balance}")
+def kilograms_to_pounds(kilograms):
+    return kilograms * 2.20462
 
-def withdraw(amount):
-    global balance
-    if amount > balance:
-        print("Insufficient funds.")
-    else:
-        balance -= amount
-        print(f"Withdrawn ₹{amount}. New Balance: ₹{balance}")
+print("Unit Converter")
+print("1. Celsius → Fahrenheit")
+print("2. Kilometers → Miles")
+print("3. Kilograms → Pounds")
 
-check_balance()
-deposit(5000)
-withdraw(3000)
-check_balance()
+choice = input("Choose a conversion: ")
+value = float(input("Enter the value: "))
+
+if choice == "1":
+    result = celsius_to_fahrenheit(value)
+    unit = "°F"
+elif choice == "2":
+    result = kilometers_to_miles(value)
+    unit = "miles"
+elif choice == "3":
+    result = kilograms_to_pounds(value)
+    unit = "pounds"
+else:
+    print("Invalid choice.")
+    result = None
+    unit = ""
+
+if result is not None:
+    print(f"Result: {result:.2f} {unit}")
 ```
+
+### Improvements to Try
+
+1. Add Fahrenheit-to-Celsius and miles-to-kilometers conversions.
+2. Move the menu into a function that returns the selected option.
+3. Use a dictionary to map choices to conversion functions.
+4. Add input validation for invalid numbers and choices.
+
+The ATM example is useful additional function practice, but the unit
+converter is the roadmap mini-project for this day.
 
 ---
 

@@ -384,26 +384,28 @@ for i in range(6):
 
 ---
 
-# Mini Project – Number Guessing Game
+# Mini Project – Multiplication Table Generator
+
+The roadmap project for Day 3 is a multiplication table generator. It
+provides practice with `for`, `range()`, and formatted output.
 
 ```python
-import random
+number = int(input("Enter a number: "))
+limit = int(input("How many multiples should be shown? "))
 
-secret = random.randint(1, 100)
-attempts = 0
-
-while True:
-    guess = int(input("Guess the number (1–100): "))
-    attempts += 1
-
-    if guess < secret:
-        print("Too Low!")
-    elif guess > secret:
-        print("Too High!")
-    else:
-        print(f"Correct! You guessed it in {attempts} attempts.")
-        break
+for multiplier in range(1, limit + 1):
+    print(f"{number} × {multiplier} = {number * multiplier}")
 ```
+
+### Improvements to Try
+
+1. Print tables from 1 through 10 using a nested loop.
+2. Format several tables as aligned columns.
+3. Validate that the limit is positive.
+4. Add a `while` loop so the user can generate another table.
+
+The number guessing game above is useful loop practice, but the
+multiplication table generator is the roadmap mini-project for this day.
 
 ---
 

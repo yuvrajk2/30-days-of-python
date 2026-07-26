@@ -371,6 +371,39 @@ After completing Day 20, you should be able to:
 
 ---
 
+# Week 3 Project Checkpoint – Password Manager
+
+The roadmap's Week 3 goal is a Password Manager. For this learning project,
+focus on structure, validation, and safe handling rather than building a
+production password vault.
+
+## Minimum Features
+
+- Add a service name, username, and password entry.
+- Search entries by service.
+- Generate strong random passwords.
+- Validate required fields.
+- Save and load entries only in a clearly identified local practice file.
+
+```python
+import secrets
+import string
+
+def generate_password(length=16):
+    if length < 8:
+        raise ValueError("Password length must be at least 8")
+    alphabet = string.ascii_letters + string.digits + string.punctuation
+    return "".join(secrets.choice(alphabet) for _ in range(length))
+```
+
+Use the Day 16 regex notes to validate service names and usernames, Day 19
+type hints to describe records, and Day 20 formatting tools to keep the
+project readable. Never commit real passwords or secret keys. A production
+password manager requires encryption, key management, and careful security
+review; this checkpoint is an educational prototype only.
+
+---
+
 # Recommended Practice Time
 
 | Activity | Time |

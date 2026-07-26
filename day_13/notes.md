@@ -358,6 +358,49 @@ After completing Day 13, you should be able to:
 
 ---
 
+# Week 2 Project Checkpoint – Library Management System
+
+The roadmap's Week 2 goal is a Library Management System. Use the
+intermediate topics from Days 8–13 to build a small console application.
+
+## Minimum Features
+
+- Store books with an ID, title, author, and availability status.
+- Add and list books.
+- Search by title or author.
+- Check out an available book.
+- Return a checked-out book.
+- Handle an unknown book ID with a clear message.
+
+```python
+books = {
+    1: {"title": "Python Basics", "author": "A. Learner", "available": True},
+}
+
+def search_books(query):
+    query = query.casefold()
+    return [
+        book for book in books.values()
+        if query in book["title"].casefold()
+        or query in book["author"].casefold()
+    ]
+
+def checkout(book_id):
+    if book_id not in books:
+        raise KeyError("Book not found")
+    if not books[book_id]["available"]:
+        return False
+    books[book_id]["available"] = False
+    return True
+```
+
+Extend the project with CSV or JSON persistence, a class-based design, and
+tests for searching, checkout, return, and invalid IDs. This checkpoint
+fulfills the Week 2 project goal while the Data Processing Program remains
+the Day 13 mini-project.
+
+---
+
 # Recommended Practice Time
 
 | Activity | Time |
