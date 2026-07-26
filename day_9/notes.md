@@ -1,5 +1,5 @@
 # Python Notes – Day 9
-## List Comprehensions and Dictionary Comprehensions
+## Exception Handling – try, except, else, finally, raise
 
 ---
 
@@ -7,210 +7,258 @@
 
 By the end of this lesson, you should be able to:
 
-- Write list comprehensions as a concise alternative to loops.
-- Add conditions to comprehensions.
-- Write nested list comprehensions.
-- Write dictionary and set comprehensions.
+- Understand what exceptions are and why they occur.
+- Use `try`, `except`, `else`, and `finally` blocks.
+- Catch specific exception types.
+- Raise exceptions with `raise`.
+- Create custom exceptions.
 
 ---
 
-# What is a List Comprehension?
+# What is an Exception?
 
-A list comprehension creates a new list in a single, readable line.
-
-### Without Comprehension
+An exception is a runtime error that stops program execution.
 
 ```python
-squares = []
-for x in range(1, 6):
-    squares.append(x ** 2)
-print(squares)
+print(10 / 0)        # ZeroDivisionError
+print(int("abc"))    # ValueError
+print(x)            # NameError
+print([1,2][5])      # IndexError
 ```
 
-### With Comprehension
+Without handling, these crash the program.
+
+---
+
+# Common Built-in Exceptions
+
+| Exception | Cause |
+|-----------|-------|
+| `ZeroDivisionError` | Division by zero |
+| `ValueError` | Wrong value type |
+| `TypeError` | Wrong data type |
+| `NameError` | Variable not defined |
+| `IndexError` | List index out of range |
+| `KeyError` | Dict key not found |
+| `FileNotFoundError` | File does not exist |
+| `AttributeError` | Object has no attribute |
+| `ImportError` | Module not found |
+| `OverflowError` | Number too large |
+
+---
+
+# `try` and `except`
 
 ```python
-squares = [x ** 2 for x in range(1, 6)]
-print(squares)
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
 ```
 
 **Output**
 
 ```
-[1, 4, 9, 16, 25]
+Cannot divide by zero!
+```
+
+The program continues instead of crashing.
+
+---
+
+# Catching Multiple Exceptions
+
+## Separate `except` Blocks
+
+```python
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("That is not a valid number.")
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
 ```
 
 ---
 
-# Syntax
+## Single Block for Multiple Types
 
 ```python
-[expression for item in iterable]
+except (ValueError, ZeroDivisionError) as e:
+    print(f"Error: {e}")
 ```
 
 ---
 
-# With a Condition (Filtering)
+## Catch All Exceptions
 
 ```python
-[expression for item in iterable if condition]
-```
-
-### Example – Even Numbers Only
-
-```python
-evens = [x for x in range(1, 11) if x % 2 == 0]
-print(evens)   # [2, 4, 6, 8, 10]
+except Exception as e:
+    print(f"Unexpected error: {e}")
 ```
 
 ---
 
-### Example – Filter Positive Numbers
+# `else` Block
+
+Runs only when **no exception** occurred.
 
 ```python
-nums = [-3, -1, 0, 2, 5, -7, 8]
-positives = [n for n in nums if n > 0]
-print(positives)   # [2, 5, 8]
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
+except ValueError:
+    print("Invalid input.")
+else:
+    print(f"Result: {result}")
 ```
 
 ---
 
-# With `if-else` (Transformation)
+# `finally` Block
+
+Always runs — whether an exception occurred or not.
 
 ```python
-[expr_true if condition else expr_false for item in iterable]
+try:
+    f = open("data.txt", "r")
+    content = f.read()
+except FileNotFoundError:
+    print("File not found.")
+finally:
+    print("Execution complete.")
 ```
 
+Use `finally` for cleanup (closing files, releasing resources).
+
+---
+
+# `raise` – Raising Exceptions
+
+You can raise exceptions intentionally.
+
 ```python
-result = ["even" if x % 2 == 0 else "odd" for x in range(1, 6)]
-print(result)   # ['odd', 'even', 'odd', 'even', 'odd']
+def divide(a, b):
+    if b == 0:
+        raise ZeroDivisionError("Divider cannot be zero.")
+    return a / b
+
+try:
+    print(divide(10, 0))
+except ZeroDivisionError as e:
+    print(f"Caught: {e}")
 ```
 
 ---
 
-# String Operations in Comprehensions
+## Raising with Custom Message
 
 ```python
-words = ["hello", "world", "python"]
-upper = [w.upper() for w in words]
-print(upper)   # ['HELLO', 'WORLD', 'PYTHON']
+age = int(input("Enter age: "))
+if age < 0:
+    raise ValueError("Age cannot be negative.")
 ```
 
 ---
 
-# Nested List Comprehension
+# Custom Exceptions
+
+Create your own exception classes.
 
 ```python
-matrix = [[i * j for j in range(1, 4)] for i in range(1, 4)]
-print(matrix)
-```
+class InsufficientFundsError(Exception):
+    def __init__(self, balance, amount):
+        self.balance = balance
+        self.amount = amount
+        super().__init__(f"Cannot withdraw ₹{amount}. Balance: ₹{balance}.")
 
-**Output**
+def withdraw(balance, amount):
+    if amount > balance:
+        raise InsufficientFundsError(balance, amount)
+    return balance - amount
 
-```
-[[1, 2, 3], [2, 4, 6], [3, 6, 9]]
+try:
+    new_balance = withdraw(500, 1000)
+except InsufficientFundsError as e:
+    print(e)
 ```
 
 ---
 
-# Flatten a Nested List
+# Nested `try-except`
 
 ```python
-nested = [[1, 2], [3, 4], [5, 6]]
-flat = [x for row in nested for x in row]
-print(flat)   # [1, 2, 3, 4, 5, 6]
+try:
+    try:
+        x = int("abc")
+    except ValueError:
+        print("Inner: invalid number")
+        raise   # re-raise the exception
+except ValueError:
+    print("Outer: caught again")
 ```
 
 ---
 
-# Dictionary Comprehension
+# Exception Hierarchy
 
-```python
-{key_expr: value_expr for item in iterable}
 ```
-
-### Example
-
-```python
-squares = {x: x**2 for x in range(1, 6)}
-print(squares)   # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
-```
-
----
-
-### With Condition
-
-```python
-even_squares = {x: x**2 for x in range(1, 11) if x % 2 == 0}
-print(even_squares)   # {2: 4, 4: 16, 6: 36, 8: 64, 10: 100}
+BaseException
+ └── Exception
+      ├── ArithmeticError
+      │    └── ZeroDivisionError
+      ├── LookupError
+      │    ├── IndexError
+      │    └── KeyError
+      ├── ValueError
+      ├── TypeError
+      └── OSError
+           └── FileNotFoundError
 ```
 
 ---
 
-### Swapping Keys and Values
+# `assert` Statement
+
+Used for debugging — raises `AssertionError` if condition is False.
 
 ```python
-original = {"a": 1, "b": 2, "c": 3}
-inverted = {v: k for k, v in original.items()}
-print(inverted)   # {1: 'a', 2: 'b', 3: 'c'}
+def square_root(n):
+    assert n >= 0, "Number must be non-negative"
+    return n ** 0.5
+
+print(square_root(9))    # 3.0
+print(square_root(-1))   # AssertionError
 ```
-
----
-
-# Set Comprehension
-
-```python
-unique_squares = {x**2 for x in [-2, -1, 0, 1, 2]}
-print(unique_squares)   # {0, 1, 4}
-```
-
----
-
-# Generator Expression
-
-Similar to a list comprehension but uses `()` and is **lazy** (does not build the whole list in memory).
-
-```python
-gen = (x**2 for x in range(1, 6))
-print(next(gen))   # 1
-print(next(gen))   # 4
-print(list(gen))   # [9, 16, 25]
-```
-
-Use generators when working with large datasets.
-
----
-
-# When to Use Comprehensions
-
-| Use | When |
-|-----|------|
-| List comprehension | You need the full list in memory |
-| Generator expression | You iterate once over large data |
-| Dict comprehension | You need key-value pairs |
-| Set comprehension | You need unique values |
 
 ---
 
 # Common Mistakes
 
-## Overly Complex Comprehensions
+## Bare `except` (Catches Everything Including System Exits)
 
 ```python
-# Hard to read
-result = [x**2 for x in range(100) if x % 2 == 0 if x % 3 == 0]
+try:
+    ...
+except:   # avoid — too broad
+    pass
 ```
 
-Fix: use a regular loop when logic gets complex.
+Fix: always catch specific exception types.
 
 ---
 
-## Confusing Generator with List
+## Silencing Errors with `pass`
 
 ```python
-gen = (x for x in range(5))
-print(gen)   # <generator object ...>  NOT a list
+except ValueError:
+    pass   # error is swallowed silently
 ```
+
+Always at least log the error.
 
 ---
 
@@ -218,52 +266,86 @@ print(gen)   # <generator object ...>  NOT a list
 
 ## Basic
 
-1. Create a list of squares of numbers from 1 to 10.
-2. Create a list of even numbers from 1 to 20.
-3. Convert all strings in a list to uppercase.
-4. Filter out all negative numbers from a list.
-5. Create a list of lengths of words in a sentence.
-6. Create a list of tuples `(number, square)` for 1–5.
-7. Replace negative numbers with 0 in a list.
-8. Extract all vowels from a string into a list.
-9. Create a list of the first letter of each word.
-10. Generate a list of multiples of 3 up to 30.
+1. Handle a `ZeroDivisionError` when dividing two numbers.
+2. Handle a `ValueError` when converting user input to int.
+3. Handle a `FileNotFoundError` when opening a file.
+4. Use `else` to print the result only when no error occurs.
+5. Use `finally` to print "Done" regardless of the outcome.
+6. Raise a `ValueError` if a user enters a negative number.
+7. Catch both `ValueError` and `ZeroDivisionError` in one block.
+8. Create a safe division function that never crashes.
+9. Handle an `IndexError` when accessing a list element.
+10. Handle a `KeyError` when accessing a dictionary key.
 
 ---
 
 ## Intermediate
 
-11. Flatten a 3×3 matrix using a list comprehension.
-12. Create a dictionary mapping words to their lengths.
-13. Find all numbers divisible by both 3 and 5 from 1–100.
-14. Create a set of unique characters in a string.
-15. Transpose a matrix using list comprehension.
+11. Create a custom `AgeError` exception for invalid ages.
+12. Write a function that validates a password and raises exceptions for each rule broken.
+13. Build a safe integer input function that keeps asking until valid.
+14. Handle multiple exception types in a file reader.
+15. Re-raise an exception after logging it.
 
 ---
 
-# Mini Project – Grade Report
+# Mini Project – ATM Simulation
 
 ```python
-students = {
-    "Raj": 85,
-    "Priya": 92,
-    "Sam": 67,
-    "Anita": 78,
-    "Karan": 55
-}
+class InsufficientFundsError(Exception):
+    pass
 
-grades = {
-    name: "A" if score >= 90 else "B" if score >= 75 else "C" if score >= 60 else "F"
-    for name, score in students.items()
-}
+class InvalidAmountError(Exception):
+    pass
 
-passed = [name for name, score in students.items() if score >= 60]
-failed = [name for name, score in students.items() if score < 60]
+class ATM:
+    def __init__(self, balance=0):
+        self.balance = balance
 
-print("Grades:", grades)
-print("Passed:", passed)
-print("Failed:", failed)
-print("Average:", sum(students.values()) / len(students))
+    def deposit(self, amount):
+        if amount <= 0:
+            raise InvalidAmountError("Deposit amount must be positive.")
+        self.balance += amount
+        print(f"Deposited ₹{amount}. Balance: ₹{self.balance}")
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            raise InvalidAmountError("Withdrawal amount must be positive.")
+        if amount > self.balance:
+            raise InsufficientFundsError(
+                f"Insufficient funds. Balance: ₹{self.balance}, Requested: ₹{amount}"
+            )
+        self.balance -= amount
+        print(f"Withdrawn ₹{amount}. Balance: ₹{self.balance}")
+
+    def check_balance(self):
+        print(f"Current Balance: ₹{self.balance}")
+
+atm = ATM(balance=10000)
+
+while True:
+    print("\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit")
+    choice = input("Enter choice: ")
+    try:
+        if choice == "1":
+            amount = float(input("Amount to deposit: "))
+            atm.deposit(amount)
+        elif choice == "2":
+            amount = float(input("Amount to withdraw: "))
+            atm.withdraw(amount)
+        elif choice == "3":
+            atm.check_balance()
+        elif choice == "4":
+            print("Thank you. Goodbye!")
+            break
+        else:
+            print("Invalid choice.")
+    except InvalidAmountError as e:
+        print(f"Invalid Amount: {e}")
+    except InsufficientFundsError as e:
+        print(f"Transaction Failed: {e}")
+    except ValueError:
+        print("Please enter a valid number.")
 ```
 
 ---
@@ -272,10 +354,10 @@ print("Average:", sum(students.values()) / len(students))
 
 After completing Day 9, you should be able to:
 
-- Write list comprehensions with and without conditions.
-- Use `if-else` inside comprehensions.
-- Write dictionary and set comprehensions.
-- Use generator expressions for memory efficiency.
+- Use `try`, `except`, `else`, `finally` correctly.
+- Catch specific and multiple exception types.
+- Raise exceptions with custom messages.
+- Create and use custom exception classes.
 
 ---
 
@@ -283,9 +365,9 @@ After completing Day 9, you should be able to:
 
 | Activity | Time |
 |----------|------|
-| Reading Notes | 20 minutes |
-| Coding Along | 45 minutes |
-| Practice Problems | 45 minutes |
-| Mini Project | 30 minutes |
+| Reading Notes | 30 minutes |
+| Coding Along | 60 minutes |
+| Practice Problems | 60 minutes |
+| Mini Project | 45 minutes |
 
-**Total:** Approximately **2.5 hours**
+**Total:** Approximately **3.5 hours**

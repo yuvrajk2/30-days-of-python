@@ -1,5 +1,5 @@
 # Python Notes – Day 6
-## Tuples and Sets
+## Tuples, Sets, and Dictionary Basics
 
 ---
 
@@ -8,10 +8,9 @@
 By the end of this lesson, you should be able to:
 
 - Create and use tuples.
-- Understand why tuples are immutable.
-- Create and use sets.
-- Perform set operations (union, intersection, difference).
-- Choose between lists, tuples, and sets.
+- Create and use sets and perform set operations.
+- Understand the basics of dictionaries.
+- Choose the right collection type for a task.
 
 ---
 
@@ -22,7 +21,7 @@ A tuple is an **ordered, immutable** collection.
 ```python
 coords = (10, 20)
 person = ("Raj", 20, "Delhi")
-single = (42,)   # single-element tuple needs a trailing comma
+single = (42,)   # single-element tuple — trailing comma required
 ```
 
 ---
@@ -31,7 +30,6 @@ single = (42,)   # single-element tuple needs a trailing comma
 
 ```python
 person = ("Raj", 20, "Delhi")
-
 print(person[0])    # Raj
 print(person[-1])   # Delhi
 ```
@@ -82,7 +80,7 @@ print(name)   # Raj
 
 ## When to Use Tuples
 
-- When data should not change (coordinates, RGB values, database records).
+- Data that must not change (coordinates, RGB values, records).
 - Tuples are **faster** than lists.
 - Can be used as dictionary keys.
 
@@ -94,29 +92,8 @@ A set is an **unordered, mutable** collection of **unique** elements.
 
 ```python
 fruits = {"apple", "banana", "cherry"}
-numbers = {1, 2, 3, 4, 5}
-```
-
----
-
-## Creating a Set
-
-```python
-s = set()           # empty set (NOT {}, that's a dict)
-s = {1, 2, 3}
-s = set([1, 2, 2, 3])   # duplicates removed
-print(s)   # {1, 2, 3}
-```
-
----
-
-## Set is Unordered
-
-Elements have no guaranteed order — you cannot index a set.
-
-```python
-s = {3, 1, 2}
-print(s)   # {1, 2, 3} or any order
+s = set([1, 2, 2, 3])   # duplicates removed → {1, 2, 3}
+s = set()               # empty set (NOT {})
 ```
 
 ---
@@ -128,19 +105,13 @@ print(s)   # {1, 2, 3} or any order
 | `add(x)` | Add element x |
 | `remove(x)` | Remove x (error if absent) |
 | `discard(x)` | Remove x (no error if absent) |
-| `pop()` | Remove a random element |
 | `clear()` | Remove all elements |
 | `copy()` | Return a copy |
 
 ```python
 s = {1, 2, 3}
 s.add(4)
-print(s)   # {1, 2, 3, 4}
-
-s.remove(2)
-print(s)   # {1, 3, 4}
-
-s.discard(99)  # no error
+s.discard(99)   # no error
 ```
 
 ---
@@ -152,7 +123,7 @@ s.discard(99)  # no error
 | Union | `\|` | `union()` |
 | Intersection | `&` | `intersection()` |
 | Difference | `-` | `difference()` |
-| Symmetric Difference | `^` | `symmetric_difference()` |
+| Symmetric Diff | `^` | `symmetric_difference()` |
 
 ```python
 a = {1, 2, 3, 4}
@@ -166,56 +137,106 @@ print(a ^ b)   # {1, 2, 5, 6}
 
 ---
 
-## Set Membership
-
-```python
-s = {1, 2, 3}
-print(2 in s)    # True
-print(5 not in s)  # True
-```
-
----
-
 ## Subset and Superset
 
 ```python
 a = {1, 2}
 b = {1, 2, 3, 4}
-
 print(a.issubset(b))    # True
 print(b.issuperset(a))  # True
 ```
 
 ---
 
-## Frozen Set
+# Dictionary Basics
 
-An immutable set — can be used as a dictionary key.
+A dictionary stores data as **key-value pairs**.
 
 ```python
-fs = frozenset({1, 2, 3})
+student = {
+    "name": "Raj",
+    "age": 20,
+    "city": "Delhi"
+}
 ```
 
 ---
 
-# Comparison: List vs Tuple vs Set
+## Creating a Dictionary
 
-| Feature | List | Tuple | Set |
-|---------|------|-------|-----|
-| Ordered | ✅ | ✅ | ❌ |
-| Mutable | ✅ | ❌ | ✅ |
-| Duplicates | ✅ | ✅ | ❌ |
-| Indexing | ✅ | ✅ | ❌ |
+```python
+empty = {}
+person = {"name": "Raj", "age": 20}
+scores = dict(math=90, science=85)
+```
+
+---
+
+## Accessing Values
+
+```python
+student = {"name": "Raj", "age": 20}
+print(student["name"])              # Raj
+print(student.get("age"))           # 20
+print(student.get("grade", "N/A")) # N/A (default)
+```
+
+---
+
+## Adding and Updating
+
+```python
+student["grade"] = "A"        # add new key
+student["age"] = 21           # update existing key
+```
+
+---
+
+## Deleting Items
+
+```python
+del student["city"]
+popped = student.pop("age")
+```
+
+---
+
+## Iterating a Dictionary
+
+```python
+for key, value in student.items():
+    print(f"{key}: {value}")
+```
+
+---
+
+## Checking Keys
+
+```python
+print("name" in student)       # True
+print("grade" not in student)  # True
+```
+
+---
+
+# Comparison: List vs Tuple vs Set vs Dict
+
+| Feature | List | Tuple | Set | Dict |
+|---------|------|-------|-----|------|
+| Ordered | ✅ | ✅ | ❌ | ✅ (3.7+) |
+| Mutable | ✅ | ❌ | ✅ | ✅ |
+| Duplicates | ✅ | ✅ | ❌ | Keys: ❌ |
+| Key-Value | ❌ | ❌ | ❌ | ✅ |
 
 ---
 
 # Common Mistakes
 
-## Empty Set
+## Empty Set vs Empty Dict
 
 ```python
-s = {}   # This is a dict, NOT a set!
-s = set()  # Correct empty set
+s = {}      # This is a dict!
+s = set()   # Correct empty set
 ```
 
 ---
@@ -234,45 +255,72 @@ t[0] = 99   # TypeError
 ## Basic
 
 1. Create a tuple of 5 cities and print each.
-2. Access the second element of a tuple.
+2. Unpack a tuple into separate variables.
 3. Count how many times a value appears in a tuple.
 4. Create a set and add/remove elements.
 5. Remove duplicates from a list using a set.
-6. Find the union of two sets.
-7. Find the intersection of two sets.
-8. Check if one set is a subset of another.
-9. Create a frozenset.
-10. Convert a list to a set and back to a list.
+6. Find union and intersection of two sets.
+7. Create a dictionary for a student and print all keys and values.
+8. Add and update keys in a dictionary.
+9. Check if a key exists in a dictionary.
+10. Delete a key from a dictionary.
 
 ---
 
 ## Intermediate
 
 11. Find common elements between two lists using sets.
-12. Find unique words in a sentence.
-13. Find elements in list A but not in list B.
-14. Unpack a tuple into variables.
-15. Return multiple values from a function as a tuple.
+12. Find unique words in a sentence using a set.
+13. Count word frequency in a sentence using a dictionary.
+14. Create a dictionary from two lists using `zip()`.
+15. Find the key with the maximum value in a dictionary.
 
 ---
 
-# Mini Project – Unique Visitor Counter
+# Mini Project – Contact Book
 
 ```python
-visitors = set()
+contacts = {}
 
 while True:
-    name = input("Enter visitor name (or 'quit' to stop): ")
-    if name.lower() == "quit":
-        break
-    if name in visitors:
-        print(f"{name} has visited before.")
-    else:
-        visitors.add(name)
-        print(f"Welcome, {name}!")
+    print("\n1. Add Contact\n2. Search\n3. Delete\n4. Show All\n5. Exit")
+    choice = input("Enter choice: ")
 
-print(f"\nTotal unique visitors: {len(visitors)}")
-print("Visitors:", visitors)
+    if choice == "1":
+        name = input("Name: ")
+        phone = input("Phone: ")
+        email = input("Email: ")
+        contacts[name] = {"phone": phone, "email": email}
+        print(f"Contact '{name}' added.")
+
+    elif choice == "2":
+        name = input("Search name: ")
+        if name in contacts:
+            info = contacts[name]
+            print(f"Name: {name}")
+            print(f"Phone: {info['phone']}")
+            print(f"Email: {info['email']}")
+        else:
+            print("Contact not found.")
+
+    elif choice == "3":
+        name = input("Delete name: ")
+        if name in contacts:
+            del contacts[name]
+            print("Contact deleted.")
+        else:
+            print("Contact not found.")
+
+    elif choice == "4":
+        if contacts:
+            for name, info in contacts.items():
+                print(f"{name} | {info['phone']} | {info['email']}")
+        else:
+            print("No contacts saved.")
+
+    elif choice == "5":
+        print("Goodbye!")
+        break
 ```
 
 ---
@@ -283,8 +331,8 @@ After completing Day 6, you should be able to:
 
 - Create and use tuples (ordered, immutable).
 - Create and use sets (unordered, unique elements).
-- Perform union, intersection, difference, and symmetric difference.
-- Choose the right data structure for the task.
+- Perform union, intersection, difference on sets.
+- Create and access dictionaries using key-value pairs.
 
 ---
 
@@ -293,8 +341,8 @@ After completing Day 6, you should be able to:
 | Activity | Time |
 |----------|------|
 | Reading Notes | 30 minutes |
-| Coding Along | 45 minutes |
+| Coding Along | 60 minutes |
 | Practice Problems | 45 minutes |
 | Mini Project | 30 minutes |
 
-**Total:** Approximately **2.5 hours**
+**Total:** Approximately **2.5–3 hours**

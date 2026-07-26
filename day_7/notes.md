@@ -1,5 +1,5 @@
 # Python Notes – Day 7
-## Dictionaries
+## Dictionary Methods, Nested Dictionaries, and Revision
 
 ---
 
@@ -7,90 +7,14 @@
 
 By the end of this lesson, you should be able to:
 
-- Create and access dictionaries.
-- Add, update, and delete key-value pairs.
-- Use dictionary methods.
-- Iterate over dictionaries.
+- Use all important dictionary methods.
 - Work with nested dictionaries.
+- Apply dictionary comprehensions.
+- Revise Week 1 concepts and build a complete mini project.
 
 ---
 
-# What is a Dictionary?
-
-A dictionary stores data as **key-value pairs**.
-
-- Keys are unique.
-- Values can be any data type.
-- Dictionaries are **ordered** (Python 3.7+) and **mutable**.
-
-```python
-student = {
-    "name": "Raj",
-    "age": 20,
-    "city": "Delhi"
-}
-```
-
----
-
-# Creating a Dictionary
-
-```python
-empty = {}
-empty = dict()
-
-person = {"name": "Raj", "age": 20}
-scores = dict(math=90, science=85)
-```
-
----
-
-# Accessing Values
-
-```python
-student = {"name": "Raj", "age": 20}
-
-print(student["name"])       # Raj
-print(student.get("age"))    # 20
-print(student.get("grade", "N/A"))  # N/A (default if key missing)
-```
-
----
-
-# Adding and Updating
-
-```python
-student = {"name": "Raj"}
-
-student["age"] = 20          # add new key
-student["name"] = "Rahul"   # update existing key
-print(student)
-```
-
-**Output**
-
-```
-{'name': 'Rahul', 'age': 20}
-```
-
----
-
-# Deleting Items
-
-```python
-student = {"name": "Raj", "age": 20, "city": "Delhi"}
-
-del student["city"]
-print(student)
-
-popped = student.pop("age")
-print(popped)    # 20
-print(student)
-```
-
----
-
-# Dictionary Methods
+# Dictionary Methods (Full Reference)
 
 | Method | Description |
 |--------|-------------|
@@ -98,11 +22,12 @@ print(student)
 | `values()` | Return all values |
 | `items()` | Return all key-value pairs |
 | `get(key, default)` | Return value or default |
-| `update(dict)` | Merge another dict in |
+| `update(dict)` | Merge another dict |
 | `pop(key)` | Remove and return value |
+| `popitem()` | Remove and return last pair |
+| `setdefault(key, val)` | Set key if not present |
 | `clear()` | Remove all items |
 | `copy()` | Shallow copy |
-| `setdefault(key, val)` | Set key if not present |
 
 ---
 
@@ -111,12 +36,21 @@ print(student)
 ```python
 student = {"name": "Raj", "age": 20, "city": "Delhi"}
 
-print(student.keys())    # dict_keys(['name', 'age', 'city'])
-print(student.values())  # dict_values(['Raj', 20, 'Delhi'])
-print(student.items())   # dict_items([...])
+# keys, values, items
+print(list(student.keys()))    # ['name', 'age', 'city']
+print(list(student.values()))  # ['Raj', 20, 'Delhi']
+print(list(student.items()))   # [('name','Raj'), ('age',20), ('city','Delhi')]
 
+# update
 student.update({"grade": "A", "age": 21})
 print(student)
+
+# setdefault
+student.setdefault("score", 95)  # adds only if not present
+
+# popitem
+last = student.popitem()
+print(last)
 ```
 
 ---
@@ -127,38 +61,64 @@ print(student)
 student = {"name": "Raj", "age": 20, "city": "Delhi"}
 
 for key in student:
-    print(key, ":", student[key])
-```
+    print(key, "->", student[key])
 
----
-
-```python
 for key, value in student.items():
-    print(f"{key} = {value}")
+    print(f"{key}: {value}")
 ```
 
 ---
 
-# Checking Keys
+# Sorting a Dictionary
+
+## By Key
 
 ```python
-student = {"name": "Raj", "age": 20}
+d = {"b": 2, "a": 1, "c": 3}
+sorted_by_key = dict(sorted(d.items()))
+print(sorted_by_key)   # {'a': 1, 'b': 2, 'c': 3}
+```
 
-print("name" in student)     # True
-print("grade" not in student)  # True
+## By Value
+
+```python
+sorted_by_value = dict(sorted(d.items(), key=lambda x: x[1]))
+print(sorted_by_value)   # {'a': 1, 'b': 2, 'c': 3}
 ```
 
 ---
 
 # Nested Dictionaries
 
+A dictionary where values are also dictionaries.
+
 ```python
 school = {
-    "student1": {"name": "Raj", "age": 20},
-    "student2": {"name": "Priya", "age": 22}
+    "student1": {"name": "Raj", "age": 20, "marks": 85},
+    "student2": {"name": "Priya", "age": 22, "marks": 92}
 }
 
-print(school["student1"]["name"])   # Raj
+print(school["student1"]["name"])    # Raj
+print(school["student2"]["marks"])   # 92
+```
+
+---
+
+## Iterating Nested Dictionaries
+
+```python
+for student_id, info in school.items():
+    print(f"\n{student_id}")
+    for key, value in info.items():
+        print(f"  {key}: {value}")
+```
+
+---
+
+## Adding to Nested Dict
+
+```python
+school["student3"] = {"name": "Sam", "age": 21, "marks": 78}
 ```
 
 ---
@@ -167,47 +127,60 @@ print(school["student1"]["name"])   # Raj
 
 ```python
 squares = {x: x**2 for x in range(1, 6)}
-print(squares)
+print(squares)   # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
 ```
 
-**Output**
+### With Condition
 
-```
-{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+```python
+even_sq = {x: x**2 for x in range(1, 11) if x % 2 == 0}
+print(even_sq)
 ```
 
 ---
 
-# `len()` and `sorted()`
+# `len()` and `in`
 
 ```python
-d = {"b": 2, "a": 1, "c": 3}
-print(len(d))          # 3
-print(sorted(d))       # ['a', 'b', 'c']
+d = {"a": 1, "b": 2, "c": 3}
+print(len(d))        # 3
+print("a" in d)      # True
+print(4 in d.values())  # False
 ```
 
 ---
 
-# Common Mistakes
+# Merging Dictionaries
 
-## KeyError
+## Using `update()`
 
 ```python
-student = {"name": "Raj"}
-print(student["age"])   # KeyError
+d1 = {"a": 1, "b": 2}
+d2 = {"c": 3, "d": 4}
+d1.update(d2)
+print(d1)
 ```
 
-Fix: use `.get()`.
+## Using `**` Unpacking (Python 3.5+)
+
+```python
+merged = {**d1, **d2}
+print(merged)
+```
 
 ---
 
-## Using Mutable Key
+# Week 1 Revision
 
-```python
-d = {[1, 2]: "list"}   # TypeError — list is not hashable
-```
-
-Fix: use a tuple — `{(1, 2): "tuple"}`.
+| Day | Topics |
+|-----|--------|
+| Day 1 | Variables, Data Types, Input/Output |
+| Day 2 | Operators, Type Casting, if/elif/else |
+| Day 3 | Loops: for, while, break, continue |
+| Day 4 | Functions, Parameters, Return, Scope |
+| Day 5 | Lists, List Methods |
+| Day 6 | Tuples, Sets, Dictionary Basics |
+| Day 7 | Dictionary Methods, Nested Dicts |
 
 ---
 
@@ -215,58 +188,98 @@ Fix: use a tuple — `{(1, 2): "tuple"}`.
 
 ## Basic
 
-1. Create a dictionary for a student with name, age, and marks.
-2. Add and update a key in the dictionary.
-3. Delete a key using `del` and `pop()`.
-4. Iterate and print all keys and values.
-5. Check if a key exists.
-6. Merge two dictionaries.
-7. Count word frequency in a sentence using a dictionary.
-8. Create a dictionary from two lists using `zip()`.
-9. Sort a dictionary by value.
-10. Find the key with the maximum value.
+1. Print all keys, values, and items of a dictionary.
+2. Use `setdefault()` to add a key only if it is missing.
+3. Sort a dictionary by value in descending order.
+4. Merge two dictionaries.
+5. Invert a dictionary (swap keys and values).
+6. Find the key with the highest value.
+7. Count word frequency in a sentence.
+8. Create a nested dictionary for 3 students.
+9. Access and update a value inside a nested dictionary.
+10. Delete a key from a nested dictionary.
 
 ---
 
 ## Intermediate
 
-11. Invert a dictionary (swap keys and values).
-12. Group a list of words by their first letter.
-13. Count the frequency of characters in a string.
-14. Find common keys in two dictionaries.
-15. Create a nested dictionary for a class with students.
+11. Group words by their length using a dictionary.
+12. Find keys common to two dictionaries.
+13. Create a dictionary from a list of tuples.
+14. Build a frequency counter without using `collections`.
+15. Convert a nested list into a dictionary.
 
 ---
 
-# Mini Project – Phone Book
+# Mini Project – Student Management System
 
 ```python
-phone_book = {}
+students = {}
+
+def add_student():
+    roll = input("Roll Number: ")
+    name = input("Name: ")
+    age = int(input("Age: "))
+    marks = float(input("Marks: "))
+    students[roll] = {"name": name, "age": age, "marks": marks}
+    print(f"Student '{name}' added.")
+
+def view_student():
+    roll = input("Enter Roll Number: ")
+    if roll in students:
+        s = students[roll]
+        print(f"\nRoll: {roll}")
+        for k, v in s.items():
+            print(f"  {k}: {v}")
+    else:
+        print("Student not found.")
+
+def update_marks():
+    roll = input("Enter Roll Number: ")
+    if roll in students:
+        marks = float(input("New Marks: "))
+        students[roll]["marks"] = marks
+        print("Marks updated.")
+    else:
+        print("Student not found.")
+
+def delete_student():
+    roll = input("Enter Roll Number: ")
+    if roll in students:
+        del students[roll]
+        print("Student deleted.")
+    else:
+        print("Student not found.")
+
+def show_all():
+    if not students:
+        print("No students found.")
+    else:
+        print(f"\n{'Roll':<10} {'Name':<15} {'Age':<5} {'Marks'}")
+        print("-" * 40)
+        for roll, s in students.items():
+            print(f"{roll:<10} {s['name']:<15} {s['age']:<5} {s['marks']}")
 
 while True:
-    print("\n1. Add Contact\n2. Search Contact\n3. Delete Contact\n4. Show All\n5. Exit")
-    choice = input("Enter choice: ")
+    print("\n--- Student Management System ---")
+    print("1. Add Student")
+    print("2. View Student")
+    print("3. Update Marks")
+    print("4. Delete Student")
+    print("5. Show All Students")
+    print("6. Exit")
+    choice = input("Choice: ")
 
-    if choice == "1":
-        name = input("Name: ")
-        number = input("Number: ")
-        phone_book[name] = number
-        print("Contact added.")
-    elif choice == "2":
-        name = input("Search name: ")
-        print(phone_book.get(name, "Contact not found."))
-    elif choice == "3":
-        name = input("Delete name: ")
-        if name in phone_book:
-            del phone_book[name]
-            print("Contact deleted.")
-        else:
-            print("Contact not found.")
-    elif choice == "4":
-        for name, number in phone_book.items():
-            print(f"{name}: {number}")
-    elif choice == "5":
+    if choice == "1":   add_student()
+    elif choice == "2": view_student()
+    elif choice == "3": update_marks()
+    elif choice == "4": delete_student()
+    elif choice == "5": show_all()
+    elif choice == "6":
+        print("Goodbye!")
         break
+    else:
+        print("Invalid choice.")
 ```
 
 ---
@@ -275,11 +288,11 @@ while True:
 
 After completing Day 7, you should be able to:
 
-- Create and manipulate dictionaries.
-- Use `.keys()`, `.values()`, `.items()`, `.get()`, `.update()`.
-- Iterate over dictionaries.
-- Work with nested dictionaries.
+- Use all dictionary methods confidently.
+- Work with and iterate nested dictionaries.
+- Sort dictionaries by key or value.
 - Use dictionary comprehensions.
+- Apply Week 1 knowledge in a complete program.
 
 ---
 
@@ -288,8 +301,9 @@ After completing Day 7, you should be able to:
 | Activity | Time |
 |----------|------|
 | Reading Notes | 30 minutes |
+| Revision | 30 minutes |
 | Coding Along | 60 minutes |
-| Practice Problems | 60 minutes |
-| Mini Project | 30 minutes |
+| Practice Problems | 45 minutes |
+| Mini Project | 45 minutes |
 
-**Total:** Approximately **3 hours**
+**Total:** Approximately **3.5 hours**
