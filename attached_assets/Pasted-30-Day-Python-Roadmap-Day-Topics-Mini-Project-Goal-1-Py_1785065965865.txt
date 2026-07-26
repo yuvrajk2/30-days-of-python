@@ -1,0 +1,92 @@
+30-Day Python Roadmap
+Day	Topics	Mini Project / Goal
+1	Python Installation, VS Code, Python Syntax, Variables, Data Types, Input/Output	Simple Calculator
+2	Operators, Type Casting, if, elif, else	Grade Calculator
+3	for Loop, while Loop, Nested Loops, break, continue, pass	Multiplication Table Generator
+4	Functions, Parameters, Return Values, Scope, Built-in Functions	Unit Converter
+5	Lists, List Methods, List Operations	Student Marks Manager
+6	Tuples, Sets, Dictionary Basics	Contact Book
+7	Dictionary Methods, Nested Dictionaries, Revision	Student Management System
+8	Modules (math, random, datetime, os)	Random Password Generator
+9	Exception Handling (try, except, else, finally, raise)	ATM Simulation
+10	File Handling (Read, Write, Append), CSV Basics	Notes Application
+11	Object-Oriented Programming (Classes, Objects, Constructors)	Bank Account Class
+12	Inheritance, Encapsulation, Polymorphism, Dunder Methods	Employee Management System
+13	Lambda Functions, map(), filter(), reduce(), Iterators	Data Processing Program
+14	List Comprehensions, Generator Expressions	Password List Generator
+15	Decorators, Context Managers	File Logger
+16	Regular Expressions (Regex)	Email Validator
+17	Virtual Environments, pip, Package Installation	Environment Setup
+18	pyproject.toml, Poetry, Project Structure	Python Project Template
+19	Type Hints (typing), mypy, Pydantic Basics	User Data Validator
+20	Code Formatting (black, ruff)	Format Previous Projects
+21	Arrays, Linked Lists (Concepts & Python Implementation)	Custom Linked List
+22	Stack, Queue, Heap	Stack Calculator
+23	Hash Tables, Dictionaries, Sets	Word Frequency Counter
+24	Recursion	Recursive Calculator Collection
+25	Binary Search Tree	BST Implementation
+26	Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick)	Sorting Visualizer (Console)
+27	Searching Algorithms (Linear & Binary Search), Algorithm Analysis	Search Utility
+28	Testing (unittest, pytest)	Test Your Calculator
+29	Documentation (Sphinx) and Introduction to Flask or FastAPI	Simple REST API
+30	Final Revision and Capstone Project	Build a Complete Python Application
+Weekly Goals
+Week 1 – Python Fundamentals
+Variables
+Data Types
+Input/Output
+Operators
+Conditions
+Loops
+Functions
+Lists
+Dictionaries
+
+Project: Student Management System
+
+Week 2 – Intermediate Python
+Modules
+Exception Handling
+File Handling
+Object-Oriented Programming
+Functional Programming
+
+Project: Library Management System
+
+Week 3 – Advanced Python
+Comprehensions
+Generators
+Decorators
+Regex
+Virtual Environments
+Type Hints
+Code Formatting
+
+Project: Password Manager
+
+Week 4 – Data Structures & Real Projects
+Data Structures
+Algorithms
+Testing
+Documentation
+Flask/FastAPI
+
+Capstone Project (Choose One):
+
+Expense Tracker
+Student Management System (Advanced)
+Library Management System
+Password Manager
+Contact Book
+To-Do API
+Weather API Client
+File Organizer
+Daily Study Routine (3–4 Hours)
+Activity	Time
+Read Notes	30 min
+Watch Tutorial (Optional)	30–45 min
+Code Along	60 min
+Solve Practice Problems	45–60 min
+Mini Project	45–60 min
+
+Total: Approximately 3–4 hours/day
