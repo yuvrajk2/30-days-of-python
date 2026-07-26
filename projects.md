@@ -1,7 +1,7 @@
 # Python Projects to Build
 
 This is a focused project path, not a list of every possible Python
-project. It contains 15 practical projects. Build them in order, starting
+project. It contains 20 practical projects. Build them in order, starting
 with the basic version and then adding the improvements listed for each
 project.
 
@@ -414,9 +414,9 @@ monitoring, and a web dashboard.
 
 ---
 
-# Advanced Project
+## Advanced Projects
 
-## Optional Capstone: Web Scraper and Monitor
+## 16. Web Scraper and Monitor
 
 ### What you will build
 
@@ -443,6 +443,135 @@ Add a dashboard, email notifications, concurrent requests, and a database.
 
 ---
 
+## 17. E-commerce Backend
+
+### What you will build
+
+A backend for a small online store where customers can browse products,
+add items to a cart, and place orders.
+
+### It must be able to
+
+- Create, edit, and list products.
+- Organize products into categories.
+- Add and remove products from a shopping cart.
+- Create an order with customer and delivery details.
+- Reduce product stock after an order is placed.
+- Prevent orders when there is not enough stock.
+- Store users, products, carts, and orders in a database.
+
+### You will learn
+
+Database relationships, transactions, business rules, authentication,
+inventory management, and API design.
+
+### Improve it later
+
+Add payment-provider integration, order emails, coupons, product images,
+admin permissions, and deployment.
+
+---
+
+## 18. Data Processing Pipeline
+
+### What you will build
+
+A program that reads raw data from CSV or JSON files, cleans it, validates
+it, calculates useful results, and saves a report.
+
+### It must be able to
+
+- Read data from one or more input files.
+- Detect missing, duplicate, and invalid records.
+- Clean and normalize the data.
+- Calculate summary statistics.
+- Save cleaned data and a report.
+- Log how many records succeeded or failed.
+
+### You will learn
+
+ETL design, data validation, generators, batching, logging, error reports,
+and processing larger files efficiently.
+
+### Improve it later
+
+Add a database, scheduled runs, parallel processing, a dashboard, and
+monitoring metrics.
+
+---
+
+## 19. Real-Time Chat Application
+
+### What you will build
+
+A chat application where users can join rooms and exchange messages in
+real time through a web interface.
+
+### It must be able to
+
+- Register and authenticate users.
+- Create or join chat rooms.
+- Send and receive messages without refreshing the page.
+- Store message history.
+- Show when a user joins or leaves a room.
+- Prevent unauthenticated users from reading private rooms.
+
+### You will learn
+
+WebSockets, asynchronous programming, sessions, authentication,
+concurrency, and real-time event handling.
+
+### Improve it later
+
+Add typing indicators, file sharing, message search, notifications, and
+message delivery status.
+
+---
+
+## 20. Multi-Tenant SaaS API
+
+### What you will build
+
+A subscription-style web application where multiple organizations use the
+same system while each organization can see only its own data.
+
+### It must be able to
+
+- Register an organization and its users.
+- Keep organization data separate.
+- Support owner, admin, and regular-user roles.
+- Allow users to create and manage organization records.
+- Reject requests for data belonging to another organization.
+- Record important account and permission changes.
+
+### You will learn
+
+Tenant isolation, role-based access control, authentication, database
+design, audit logs, and security-focused API development.
+
+### Improve it later
+
+Add subscription plans, usage limits, invitations, billing integration,
+background jobs, and organization-level analytics.
+
+---
+
+# Advanced Project Quality Checklist
+
+Before calling an advanced project complete:
+
+- [ ] The architecture is explained in the README.
+- [ ] Database changes can be reproduced with migrations.
+- [ ] Authentication and authorization rules are tested.
+- [ ] Failure paths and retry behavior are tested.
+- [ ] Logs do not contain passwords, tokens, or private user data.
+- [ ] Long-running work can be monitored and stopped safely.
+- [ ] Configuration and secrets are outside the source code.
+- [ ] Performance has been measured for the important operations.
+- [ ] The project has a documented deployment or production-like setup.
+
+---
+
 # Recommended Build Order
 
 1. Simple Calculator
@@ -460,12 +589,17 @@ Add a dashboard, email notifications, concurrent requests, and a database.
 13. To-Do REST API
 14. Blog REST API
 15. Background Job Queue
-16. Optional Capstone: Web Scraper and Monitor
+16. Web Scraper and Monitor
+17. E-commerce Backend
+18. Data Processing Pipeline
+19. Real-Time Chat Application
+20. Multi-Tenant SaaS API
 
 Projects 1–4 build your fundamentals. Projects 5–10 teach file handling,
 data modeling, and object-oriented programming. Projects 11–14 introduce
 external APIs and backend development. Project 15 teaches reliability and
-background processing. The optional capstone combines several skills.
+background processing. Projects 16–20 are advanced portfolio projects that
+combine multiple Python skills and production-style design.
 
 # Definition of Done
 
